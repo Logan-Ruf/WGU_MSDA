@@ -1,15 +1,12 @@
 -- User Schemas
 CREATE TABLE user_account (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(500),
     email VARCHAR(255) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     created_at TIMESTAMP NOT NULL,
     last_login TIMESTAMP,
     is_admin BOOLEAN DEFAULT FALSE
 );
-
--- SELECT * from user_account;
 
 CREATE TABLE user_session (
     token VARCHAR(255) PRIMARY KEY UNIQUE,
@@ -92,6 +89,7 @@ CREATE TABLE order_item (
     unit_price DECIMAL(10, 2)
 );
 CREATE INDEX idx_product_reporting ON order_item (product_id);
+CREATE INDEX idx_order_item_order ON order_item (order_id);
 
 CREATE TABLE product_review (
     id SERIAL PRIMARY KEY,
