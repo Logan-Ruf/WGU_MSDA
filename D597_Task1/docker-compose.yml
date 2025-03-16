@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  postgres:
+    build: ../D597_Task1
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    restart: unless-stopped
